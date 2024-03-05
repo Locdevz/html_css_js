@@ -1,0 +1,86 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 15rem;
+  font-family: "Poppins", sans-serif;
+  background-color: #f2f1ed;
+  color: #de4848;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 9px 6px 0px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+}
+
+.top,
+.bottom,
+.flip-card.flip::before,
+.flip-card.flip::after {
+  height: 0.75em;
+  line-height: 1;
+  padding: 0.25em;
+  overflow: hidden;
+}
+.top,
+.flip-card.flip::before {
+  background-color: #f7f7f7;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottom,
+.flip-card.flip::after {
+  background-color: white;
+  display: flex;
+  align-items: flex-end;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.flip-card.flip::before {
+  content: "5";
+  position: absolute;
+  animation: flip-top 250ms ease-in;
+  transform-origin: bottom;
+}
+
+@keyframes flip-top {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+.flip-card.flip::after {
+  content: "5";
+  position: absolute;
+  bottom: 0;
+  animation: flip-bottom 250ms ease-out 250ms;
+  transform-origin: top;
+  transform: rotateX(90deg);
+}
+
+@keyframes flip-bottom {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
